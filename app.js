@@ -1,5 +1,5 @@
 function prayerTimes(latitude, longitude) {
-    fetch('http://api.aladhan.com/v1/calendar?latitude=' + latitude + '&longitude=' + longitude + '&method=2').then(response => response.json()).then(function (response) {
+    fetch('http://api.aladhan.com/v1/calendar?latitude=' + latitude + '&longitude=' + longitude + '&method=9').then(response => response.json()).then(function (response) {
         let date = new Date();
         let today = date.getDate() - 1;
         let data = response.data[0].timings;
@@ -28,7 +28,10 @@ function success(position) {
 }
 
 function error() {
-    alert('Position tidak dapat diakses');
+    // default menggunakan jakarta
+    prayerTimes('-6.200000', '106.816666') // jakarta
+    // prayerTimes('-6.966667', '110.416664'); // semarang
+    // prayerTimes('-5.135399', '119.423790'); // makkasar
 }
 
 function userLocation() {
